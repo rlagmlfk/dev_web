@@ -1,0 +1,22 @@
+CRUDDept.java - main
+
+하나의 클래스로 모두 구현하기
+
+View계층(UI:User Interface, 앞단) - JFrame(BorderLayout-동,서,남,북,중앙 배치)
+
+JPanel - north속지
+
+JPanel - south속지(테이블과 바인딩하는 부분)
+
+중앙 - 테이블 배치 - JTable(폼, 양식) - 데이터집합을 포함할 수 없다.
+
+데이터셋 - JDBC API강조 - Model계층 - 데이터 업데이트, View계층 업데이트
+컬렉션 프레임워크 - 복습!!
+
+List<XXXVO>
+
+List<Map<String,Object>>
+
+DefaultTableModel - 데이터셋 - 동기화처리 - JSON포맷
+
+8시간 - CRUD한 본

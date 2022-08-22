@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+// DOM조작하기
+// html5+js 비벼진다
+	function login(){
+		//alert('login()호출 성공');
+		const f_login = document.getElementById("f_login");
+		// input text에 아무것도 입력하지 않으면 null이 아니라 빈문자열이 들어있다.("")
+		// 입력하는 값에 대한 유효성 체크는 js에서 하는 것이 맞다
+		let u_id = document.getElementById("mem_id").value;
+		let u_id2 = document.querySelector("#mem_id").value;
+		alert('u_id2: '+u_id2);
+		let u_id3 = document.querySelector(".uid").value;
+		alert('u_id3: '+u_id3);
+		//alert(document.getElementById("mem_id").value);
+		console.log('사용자가 입력한 아이디는',u_id,'입니다.');
+		// 아이디 입력에 대한 유효성 체크하기
+		if(u_id !=""){
+			//f_login.submit();
+		}else{
+			alert('아이디를 입력하세요');
+			return;			
+		}
+		//console.log(f_login);
+	}
+</script>
+</head>
+<body>
+	<form id = "f_login" method="get" action="loginAction.jsp">
+	<!-- name속성은 jsp에서 사용하는 값이고 id속성은 js(CSS가능 but 권장하지 않음)에서 사용할 수 있다. -->
+		<input type="text" name="uid" id="mem_id">
+		<!-- button tag는 기본이 submit -->
+		<input type="button" onclick="login()" value="로그인"/>
+		
+	</form>
+	<form action="">
+		<select>
+			<option>떡볶이</option>
+			<option>돈까스</option>
+			<option>냉면</option>
+		</select>
+	</form>
+</body>
+</html>
