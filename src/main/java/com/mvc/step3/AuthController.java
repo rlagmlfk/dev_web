@@ -3,6 +3,7 @@ package com.mvc.step3;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,6 +16,21 @@ import com.util.HashMapBinder;
 public class AuthController implements Controller3 {
 	Logger logger = Logger.getLogger(AuthController.class);
 	AuthLogic authLogic = new AuthLogic();
+	@Override
+	public Object clogin(HttpServletRequest req, HttpServletResponse res) {
+		logger.info("clogin 호출 성공");
+		Map<String,Object> pMap = new HashMap<>();
+		HashMapBinder hmb = new HashMapBinder(req);
+		hmb.bind(pMap);
+		String s_name = null;
+		s_name = authLogic.login(pMap);
+		Cookie c = new Cookie("c_name", s_name);
+		c.setPath("/");
+		c.setMaxAge(60*3);
+		res.addCookie(c);
+		String path = "redirect:index.jsp";
+		return path;
+	}
 	//http://localhost:8000/auth/login.pj?mem_id=tomato&mem_pw=123
 	//http://localhost:8000/auth/login.pj?mem_id=banana&mem_pw=123
 	@Override
@@ -72,6 +88,8 @@ public class AuthController implements Controller3 {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
 
 
 

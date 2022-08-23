@@ -116,5 +116,11 @@ public class Board3Controller implements Controller3 {
 		return null;
 	}
 
+	@Override
+	public Object clogin(HttpServletRequest req, HttpServletResponse res) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }

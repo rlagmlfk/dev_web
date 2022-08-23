@@ -88,6 +88,15 @@ public class HandlerMapping {
 				return (String)obj;
 			}
 		}
+		else if("intro".equals(upmu[0])) { // 배열의 첫방에 업무폴더 이름
+			controller = new AuthController();
+			if("clogin".equals(upmu[1])) {
+				// 파라미터로 원본을 넘긴다
+				obj = controller.clogin(req, res);
+			}else if(obj instanceof String) {
+				return (String)obj;
+			}
+		}
 		return obj;
 	}
 }
