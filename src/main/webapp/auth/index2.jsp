@@ -22,18 +22,9 @@
 <script>
 	//DOM트리가 다 그려진거니?  yes
 	$(document).ready(function() {
-		$("#dg_member").datagrid({
-			columns:[[
-				{field: 'mem_id', title:'아이디', width: 100},
-				{field: 'mem_name', title:'이름', width: 120},
-				{field: 'mem_address', title:'주소', width: 200}
-			]]
-			,data:[
-				{mem_id: 'tomato', mem_name:'토마토', mem_address:'서울시 마포구 공덕동'}
-				,{mem_id: 'apple', mem_name:'사과', mem_address:'서울시 강남구 역삼동'}
-				,{mem_id: 'banana', mem_name:'바나나', mem_address:'서울시 강남구 대치동'}
-			]
-		});
+		$("#tre_gym_easyui_tree_2 span").click(function(){
+			alert("여기");
+		})
 	});
 </script>
 	<div style="margin: 20px 0;"></div>
@@ -95,38 +86,39 @@
 			<!--################ 메뉴 영역 시작 ###############-->
 			<div style="margin: 20px 0;"></div>
 			<ul id="tre_gym" class="easyui-tree" style="margin: 0 6px">
-				<li data-options="state:'closed'">
-					<span>회원관리</span>
+				<li data-options="state:'closed'"><span>회원관리</span>
 					<ul class="member">
-						<li>회원목록</li>
-						<li>회원등록</li>
-						<li>회원삭제</li>
+						<li>
+						회원목록
+						</li>
+						<li>
+						회원등록
+						</li>
+						<li>
+						회원삭제
+						</li>
 					</ul>
 				</li>
-				<li data-options="state:'closed'">
-					<span>쪽지관리</span>
+				<li data-options="state:'closed'"><span>쪽지관리</span>
 					<ul>
-						<li>받은쪽지함</li>
-						<li>보낸쪽지함</li>
-					</ul>
-				</li>
-				<li data-options="state:'closed'">
-					<span>게시판</span>
+						<li><span>받은쪽지함</span></li>
+						<li><span>보낸쪽지함</span></li>
+					</ul></li>
+				<li data-options="state:'closed'"><span>게시판</span>
 					<ul>
-						<li>1:1</li>
-						<li>공지사항</li>
-						<li>Q&A</li>
-					</ul>
-				</li>
+						<li><span>1:1</span></li>
+						<li><span>공지사항</span></li>
+						<li><span>Q&A</span></li>
+					</ul></li>
 			</ul>
 			<!--################ 메뉴 영역 끝 ###############-->
 		</div>
-		<div data-options="region:'center',title:'TerrGYM System',iconCls:'icon-ok'">
-			<div style="margin: 5px 0;"></div>
-			Home > 회원관리 > 회원목록
-			<hr>
-			<div style="margin: 20px 0;"></div>
-			<div id="dg_member"></div>
+		<div
+			data-options="region:'center',title:'TerrGYM System',iconCls:'icon-ok'">
+			<p style="margin: 20px 10px">
+				여기는 터짐 시스템입니다.<br> 로그인 후 사용하세요.<br>
+			</p>
+			<div id="d_memberList">회원목록</div>
 		</div>
 	</div>
 </body>
