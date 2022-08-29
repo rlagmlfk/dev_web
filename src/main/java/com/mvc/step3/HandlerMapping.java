@@ -79,6 +79,16 @@ public class HandlerMapping {
 				}
 			}
 		}
+		else if("member".equals(upmu[0])) {
+			controller = new MemberController();
+			// void doGet(req, res) -> ActionForward doService(req, res) -> String 메소드이름
+			if("memberList".equals(upmu[1])) {
+				obj = controller.memberList(req, res);
+				if(obj instanceof String) {
+					return (String)obj;
+				}
+			}
+		}
 		else if("auth".equals(upmu[0])) { // 배열의 첫방에 업무폴더 이름
 			controller = new AuthController();
 			if("login".equals(upmu[1])) {

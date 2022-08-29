@@ -24,6 +24,10 @@ import com.util.HashMapBinder;
 // 파라미터를 통해서 가져올 수 있다 - 원본
 public class Board3Controller implements Controller3 {
 	Logger logger = Logger.getLogger(Board3Controller.class);
+	// 전역변수는 인스턴스변수.변수명으로 호출이 가능
+	// 왜 인스턴스화를 하였나? 전변 호출 가능, 메소드 호출 가능
+	// 미리 해둔다. Board3Controller가 생성될 때 같이 메모리에 로딩이 미리 된다.
+	// 바로 이 대목에서 Spring 역할이 있다. - 객체 라이프 사이클 관리해줌
 	Board3Logic boardLogic = new Board3Logic();
 	
 	@Override
@@ -50,6 +54,8 @@ public class Board3Controller implements Controller3 {
 		hmb.bind(pMap);
 		ModelAndView mav = new ModelAndView(req);
 		List<Map<String, Object>> boardList = null;
+		// 필요할 때 인스턴스화 해서 호출 - 게으른 인스턴스화 - 스프링에서 위치의 문제
+		// boardLogic = new Board3Logic(); // 전역변수, 주소번지가 다르다
 		boardList = boardLogic.boardList(pMap);
 		mav.addObject("boardList",boardList);
 		mav.setViewName("board3/boardList");
@@ -118,6 +124,12 @@ public class Board3Controller implements Controller3 {
 
 	@Override
 	public Object clogin(HttpServletRequest req, HttpServletResponse res) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Object memberList(HttpServletRequest req, HttpServletResponse res) {
 		// TODO Auto-generated method stub
 		return null;
 	}
