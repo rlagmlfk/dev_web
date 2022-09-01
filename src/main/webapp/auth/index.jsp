@@ -1,5 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="com.vo.MemberVO" %>
+<% 
+	MemberVO mVO = (MemberVO)session.getAttribute("mVO");
+	String s_id = null;
+	String s_name = null;
+	if(mVO != null){
+	s_id = mVO.getMem_id();
+	s_name = mVO.getMem_name();		
+	}
+	out.print(s_id+", "+s_name);
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,20 +60,20 @@
 			// url속성에 XXX.jsp가 오면 표준 서블릿인 HttpServlt이 관여하는 것이고
 			// XXX.pj로 요청하면 ActionSupport가 관여하는 것이다.
 
-			setTimeout(function(){ 
+			//setTimeout(function(){ 
 				$("#dg_member").datagrid({
 					// 오라클 서버에서 요청한 결과를 myBatis를 사용하면 자동으로 컬럼명이 대문자
 					// 단 List<XXVO>형태라면 그땐 소문자가 맞다.
-				columns:[[
-						{field: 'MEM_ID', title:'아이디', width: 100},
-						{field: 'MEM_NAME', title:'이름', width: 120},
-						{field: 'MEM_ADDRESS', title:'주소', width: 370},
-						{field: 'BUTTON', title:'', width: 100}
-					]]
-					,method:"get"
-					,url:"/member/memberList.pj?type="+type+"&keyword="+keyword // 응답페이지는 JSON포맷의 파일이어야함(html이 아니라)
+				method:"get"
+				,url:"/member/memberList.pj?type="+type+"&keyword="+keyword // 응답페이지는 JSON포맷의 파일이어야함(html이 아니라)
+				,onDblClickCell: function(index,field,value){
+						//console.log(index+", "+field+", "+value);
+						if("BUTTON" == field){
+							alert("쪽지쓰기");
+						}
+					}
 				});
-			}, 100);
+			//}, 100);
 			$("#d_member").show();
 			$("#d_memberInsert").hide();
 		}
@@ -94,7 +105,7 @@
 		<div data-options="region:'west',split:true" title="KH정보교육원"
 			style="width: 200px;">
 			<% 
-	String s_name = (String)session.getAttribute("s_name");
+	// String s_name = (String)session.getAttribute("s_name");
 	//s_name = "이순신";
 	if(s_name == null){  	
 %>
@@ -146,6 +157,9 @@
 %>
 			<!--################ 메뉴 영역 시작 ###############-->
 			<div style="margin: 20px 0;"></div>
+<% 
+	if(s_id != null){
+%>
 			<ul id="tre_gym" class="easyui-tree" style="margin: 0 6px">
 				<li data-options="state:'closed'">
 					<span>회원관리</span>
@@ -177,6 +191,9 @@
 					</ul>
 				</li>
 			</ul>
+<% 
+	}
+%>
 			<!--################ 메뉴 영역 끝 ###############-->
 		</div>
 		<div data-options="region:'center',title:'TerrGYM System',iconCls:'icon-ok'">
@@ -200,7 +217,18 @@
 			<a id="btn" href="javascript:memberDelete()" class="easyui-linkbutton" data-options="iconCls:'icon-remove'">삭제</a>
 			</div>
 			<!-- [[ 회원목록 출력 ]] -->
-			<div id="dg_member"></div>
+			<table id="dg_member" class="easyui-datagrid" style="width:700px;height:250px"
+            	data-options="singleSelect:true,collapsible:true,method:'get'">
+        	<thead>
+            <tr>
+                <th data-options="field:'MEM_ID',width:80, align:'center'">아이디</th>
+                <th data-options="field:'MEM_NAME',width:100, align:'center'">이름</th>
+                <th data-options="field:'MEM_ADDRESS',width:370,align:'left'">주소</th>
+                <th data-options="field:'BUTTON',width:80,align:'center'"></th>
+            </tr>
+        	</thead>
+    		</table>
+			<!-- <div id="dg_member"></div> -->
 			
 			</div>
 			<div id="d_memberInsert">
