@@ -4,7 +4,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
-
+// BeanNameUrlHandlerMapping
+// SimpleUrlHandlerMapping
 public class HandlerMapping {
 	static Logger logger = Logger.getLogger(HandlerMapping.class);
 	// 왜 Object인가? - 2가지 모드 지원하겠다.

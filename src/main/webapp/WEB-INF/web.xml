@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
   <display-name>dev_web</display-name>
+  <!-- ContextParam에 하는 설정은 서버기동시 한 번 읽으면 서버가 꺼질 때까지 계속 유지된다 
+  log4j는 공통된 관심사 이다.
+  모든 업무에 공통적으로 반영될 수 있다.
+  공통된 관심사를 분리하는 기술 - AOP
+  -->
   	<context-param>
   		<param-name>log4jConfigLocation</param-name>
   		<param-value>/WEB-INF/classes/log4j.properties</param-value>
