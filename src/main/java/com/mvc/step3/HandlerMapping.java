@@ -32,6 +32,7 @@ public class HandlerMapping {
 		String path = null;
 		ModelAndView mav = null;
 		if("board3".equals(upmu[0])) { // 배열의 첫 방에 업무폴더이름
+			// BeanFactory, ApplicationContext
 			controller = new Board3Controller();
 			// 게시판 글 삭제 메소드 호출
 			// if문 사용하여 메소드 이름을 결정지었다.

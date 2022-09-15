@@ -127,6 +127,11 @@ public class Board3MDao {
 			sqlSession = sqlSessionFactory.openSession();
 			result = sqlSession.update("boardMInsert", pMap);
 			// 물리적인 테이블에 등록하는 것이니 반드시 커밋
+			// Connection con = XXXX
+			// con.commit();
+			// boolean => false
+			// con.setAutoCommit(true);
+			// con.setAutoCommit(false); 트랜잭션 처리할때
 			sqlSession.commit();
 			logger.info("result : "+result);
 		} catch (Exception e) {
