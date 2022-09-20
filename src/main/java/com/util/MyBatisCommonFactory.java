@@ -34,10 +34,19 @@ public class MyBatisCommonFactory {
 	// 인스턴스화 5가지 유형
 	public static void init() {
 		try {
+			// @ComponentScan - xml 문서 정보수집
 			String resource = "com/mybatis/MapperConfig.xml";
+			// IO패키지를 이용해 읽어들임 - POJO방식 - 자원관리 책임이 개발자에게 있다
+			// 순제어 <-> 역제어, 제어역전(스프링) - 소스리뷰 재료, 주제
 			Reader reader = Resources.getResourceAsReader(resource);
 			logger.info("before sqlSessionFactory : " + sqlSessionFactory);
-			if(sqlSessionFactory == null) { // null이 아닐때만 객체주입을 새로 받는다
+			// 싱글톤 패턴 - 사용자 정의 방식 처리하기 - 프레임 워크를 만들 수도 있다 - 서블릿과 JSP
+			// 전통적인 방식 - A a = new A() - 이른 인스턴스화, 위치:선언부(멤버); ApplicationContext, Annotation~ApplicationContext [스프링컨테이너]
+			// A a = null; 선언부 a = new A(); 생성부 -> 게으른 인스턴스화 비유
+			if(sqlSessionFactory == null) { // null일때만 객체주입을 새로 받는다 -> 조건에 따라 객체 생성 -> 관리하기
+				// 생성자 뒤에 메소드가 호출됨
+				// 왜? @ComponentScan 없음, 객체관리도 직접 해야함, xml 문서에 적힌 문자열을 Read해야함
+				// 두 번째 파라미터는 id이다.
 			sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader, "development");
 			}
 			logger.info("after sqlSessionFactory : " + sqlSessionFactory);

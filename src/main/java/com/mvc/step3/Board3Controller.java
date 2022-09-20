@@ -134,5 +134,11 @@ public class Board3Controller implements Controller3 {
 		return null;
 	}
 
+	@Override
+	public Object doEmp(HttpServletRequest req, HttpServletResponse res) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }

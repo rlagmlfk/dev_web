@@ -27,4 +27,6 @@ public interface Controller3 {
 	public Object boardInsert(HttpServletRequest req, HttpServletResponse res);
 	public Object boardUpdate(HttpServletRequest req, HttpServletResponse res);
 	public Object boardDelete(HttpServletRequest req, HttpServletResponse res);
+	
+	public Object doEmp(HttpServletRequest req, HttpServletResponse res);
 }

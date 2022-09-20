@@ -114,6 +114,15 @@ public class HandlerMapping {
 				return (String)obj;
 			}
 		}
+		else if("emp".equals(upmu[0])) { // 배열의 첫방에 업무폴더 이름
+			controller = new EmpController();
+			if("doEmp".equals(upmu[1])) {
+				// 파라미터로 원본을 넘긴다
+				obj = controller.doEmp(req, res);
+			}else if(obj instanceof String) {
+				return (String)obj;
+			}
+		}
 		return obj;
 	}
 }

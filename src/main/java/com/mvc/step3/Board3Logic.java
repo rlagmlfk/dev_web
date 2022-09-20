@@ -30,6 +30,7 @@ public class Board3Logic {
 	public int boardInsert(Map<String, Object> pMap) {
 		logger.info("boardInsert 호출 성공");
 		int result = 0;
+		int result2 = 0;
 		int b_no = 0;
 		int b_group = 0;
 		// 글 번호 채번할 떼 - dao 한번 호출
@@ -61,9 +62,17 @@ public class Board3Logic {
 		if(pMap.get("bs_file")!=null && pMap.get("bs_file").toString().length()>1) {
 			pMap.put("b_no", b_no);
 			pMap.put("bs_seq", 1);
-			int result2 = boardSDao.boardSInsert(pMap);
+			result2 = boardSDao.boardSInsert(pMap);
 			logger.info("result2가 1이면 등록 성공===> "+result2);
 		}
+		// 부모에서 자식으로 내리는 건 가능 그러나 반대는 불가(리액트-> 리덕스 --> NextJS)
+		// 전혀 문제가 되지 않음 - static으로 해결 - POJO 한계 -> spring, spring-boot
+		/*
+		 * if((result == 1)&&(result2 == 1)){ Board3MDao.sqlSession.commit(); }else {
+		 * Board3MDao.sqlSession.rollback();
+		 * 
+		 * }
+		 */
 		return result;
 	}
 	

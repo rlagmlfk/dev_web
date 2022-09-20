@@ -2,6 +2,10 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+	<!-- null 값이 들어올 때 null 값에 대한 허용여부 처리 -->
+	 <settings>
+	  <setting name="jdbcTypeForNull" value="NULL"/>
+	 </settings>
 	<environments default="development">
 		<environment id="development">
 		<transactionManager type="JDBC"/>
@@ -16,6 +20,12 @@
 		</environment>
 	</environments>
 	<mappers>
+	<!-- 매퍼 파일명이 달라도 아이디가 같으면 출돌 발생. 스캔
+		 결론 : id는 유일해야함
+		 쿼리문을 담고있는 xml파일의 물리적인 위치 
+	-->
+		<mapper resource="com/mybatis/mapper/emp.xml" />
+		<mapper resource="com/mybatis/mapper/dept.xml" />
 		<mapper resource="com/mybatis/mapper/board.xml" />
 		<mapper resource="com/mybatis/mapper/auth.xml" />
 		<mapper resource="com/mybatis/mapper/member.xml" />

@@ -17,6 +17,9 @@ public class Board3MDao {
 	SqlSession sqlSession = null;
 	
 	public Board3MDao() {
+		// 전통적인 역할 : 초기화
+		// myBatis레이어 설정 필요
+		// MapperConfig.xml(밴더정보, URL, username,..)
 		sqlSessionFactory = MyBatisCommonFactory.getSqlSessionFactory();
 	}
 	// 쿼리문의 아이디와 메소드 이름은 통일함
